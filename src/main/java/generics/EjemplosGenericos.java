@@ -1,6 +1,7 @@
 package generics;
 
 import model.Cliente;
+import model.ClientePremiun;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -12,7 +13,7 @@ public class EjemplosGenericos {
         List<Cliente> clientes = new ArrayList<>();
         clientes.add(new Cliente("Mateo", "Vlad", "25"));
 
-        Cliente jefe = clientes.iterator().next();
+        Cliente boss = clientes.iterator().next();
 
         Cliente[] clientesArreglo = {
                 new Cliente("JMateo", "Vlad", "25"),
@@ -35,11 +36,25 @@ public class EjemplosGenericos {
         }, enteros);
         nombres.forEach(System.out::println);
 
+        List<ClientePremiun> clientePremiunList = fromArrayToList(
+                new ClientePremiun[]{
+                        new ClientePremiun("Hanna", "Barbera")
+                }
+        );
 
 
     }
 
     // T para trabajar con listas
+
+    // limitar los genericos
+    public static <T extends Number> List<T> fromArrayToList(T[] c){
+        return Arrays.asList(c);
+    }
+
+    public static <T extends Cliente & Comparable<T>> List<T> fromArrayToList(T[] c){
+        return Arrays.asList(c);
+    }
 
     public static <T> List<T> fromArrayToList(T[] c){
         return Arrays.asList(c);

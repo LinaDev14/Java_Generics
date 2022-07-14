@@ -12,4 +12,9 @@ public class Cliente {
     private String nombre;
     private String apellido;
     private String edad;
+
+    public Cliente(String nombre, String apellido) {
+
+    }
+
 }
